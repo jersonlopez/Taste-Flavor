@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login">Login</string>
+    <string name="emailLogin">Insert your e-mail</string>
+    <string name="passwordLogin">Password</string>
+    <string name="google">Conect with Goocle</string>
+    <string name="logup">Singup</string>
+    <string name="Profile">Profile</string>
+    <string name="Favorite">Favotites</string>
+    <string name="Setting">Setting</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="Communicate">Communicate</string>
+    <string name="about">About us</string>
+</resources>
