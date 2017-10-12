@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Taste&amp;Flavor</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Sign in</string>
+
     <string name="login">Login</string>
     <string name="emailLogin">Insert your e-mail</string>
     <string name="passwordLogin">Password</string>
     <string name="google">Conect with Goocle</string>
+
     <string name="logup">Singup</string>
     <string name="Profile">Profile</string>
     <string name="Favorite">Favotites</string>
@@ -11,4 +20,10 @@
     <string name="logout">Cerrar sesión</string>
     <string name="Communicate">Communicate</string>
     <string name="about">About us</string>
+
+    <string name="descryption">With Taste and Flavors you can find the best places in your
+        environment to enjoy your favorite food; You can immediately know the best sites
+        in a matter of moments and also help other people with their opinions and photos
+        of those places that you like.</string>
+
 </resources>

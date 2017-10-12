@@ -14,8 +14,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="147dp"
-        android:layout_height="77dp"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         app:srcCompat="@drawable/logotf" />
 
@@ -30,6 +30,6 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="dairo.garcia@udea.edu.co" />
+        android:text="jerson.lopez@udea.edu.co" />
 
 </LinearLayout>
