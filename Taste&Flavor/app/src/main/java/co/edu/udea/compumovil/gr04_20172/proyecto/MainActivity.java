@@ -1,5 +1,6 @@
 package co.edu.udea.compumovil.gr04_20172.proyecto;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,14 +15,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import layout.AboutFragment;
-import layout.FavoriteFragment;
-import layout.ProfileFragment;
-import layout.SettingFragment;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,AboutFragment.OnFragmentInteractionListener, SettingFragment.OnFragmentInteractionListener, FavoriteFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,AboutFragment.OnFragmentInteractionListener, SettingFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener {
+
+    Fragment fragment=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,12 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //For me
+        fragment=new Favorite_Fragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentNavigation, fragment).commit();
 
 
     }
@@ -89,7 +93,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        Fragment fragment=null;
+
         boolean fragmentSeleccionado=false;
 
         if (id == R.id.nav_Profile) {
@@ -97,13 +101,13 @@ public class MainActivity extends AppCompatActivity
             fragment=new ProfileFragment();
             fragmentSeleccionado=true;
         } else if (id == R.id.nav_Favorite) {
-            fragment=new FavoriteFragment();
+            fragment=new Favorite_Fragment();
             fragmentSeleccionado=true;
         } else if (id == R.id.nav_Setting) {
             fragment=new SettingFragment();
             fragmentSeleccionado=true;
         } else if (id == R.id.nav_Logout) {
-
+            this.cerrarSesion();
         } else if (id == R.id.nav_About) {
             fragment=new AboutFragment();
             fragmentSeleccionado=true;
@@ -117,6 +121,13 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void cerrarSesion(){
+        Toast.makeText(MainActivity.this,"Hasta Luego", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
+
 
     @Override
     public void onFragmentInteraction(Uri uri) {

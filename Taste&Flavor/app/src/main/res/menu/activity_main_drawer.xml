@@ -4,13 +4,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_Profile"
-            android:icon="@mipmap/ic_profile"
-            android:title="@string/Profile" />
-        <item
             android:id="@+id/nav_Favorite"
             android:icon="@mipmap/ic_favorite"
             android:title="@string/Favorite" />
+        <item
+            android:id="@+id/nav_Profile"
+            android:icon="@mipmap/ic_profile"
+            android:title="@string/Profile" />
         <item
             android:id="@+id/nav_Setting"
             android:icon="@mipmap/ic_setting"
