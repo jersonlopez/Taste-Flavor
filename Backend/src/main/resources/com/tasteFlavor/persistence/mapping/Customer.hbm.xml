@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/10/2017 05:48:10 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="taste_flavor" name="com.tasteFlavor.persistence.mapping.Customer" optimistic-lock="version" table="customer">
+    <id name="email" type="string">
+      <column length="30" name="email"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="name" type="string">
+      <column length="50" name="name" not-null="true"/>
+    </property>
+    <property name="neighborhood" type="string">
+      <column length="50" name="neighborhood" not-null="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="20" name="password" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="nextToVisits" table="next_to_visit">
+      <key>
+        <column length="30" name="customer" not-null="true"/>
+      </key>
+      <one-to-many class="com.tasteFlavor.persistence.mapping.NextToVisit"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="calificationPerUsers" table="calification_per_user">
+      <key>
+        <column length="30" name="customer" not-null="true"/>
+      </key>
+      <one-to-many class="com.tasteFlavor.persistence.mapping.CalificationPerUser"/>
+    </set>
+  </class>
+</hibernate-mapping>

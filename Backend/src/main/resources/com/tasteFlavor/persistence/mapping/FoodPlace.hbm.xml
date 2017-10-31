@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/10/2017 05:48:10 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="taste_flavor" name="com.tasteFlavor.persistence.mapping.FoodPlace" optimistic-lock="version" table="food_place">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.tasteFlavor.persistence.mapping.PlaceType" fetch="select" name="placeType">
+      <column name="placeType" not-null="true"/>
+    </many-to-one>
+    <property name="name" type="string">
+      <column length="50" name="name" not-null="true"/>
+    </property>
+    <property name="address" type="string">
+      <column length="400" name="address" not-null="true"/>
+    </property>
+    <property name="phone" type="string">
+      <column length="20" name="phone" not-null="true"/>
+    </property>
+    <property name="schedule" type="string">
+      <column length="500" name="schedule" not-null="true"/>
+    </property>
+    <property name="description" type="string">
+      <column length="300" name="description" not-null="true"/>
+    </property>
+    <property name="urlPage" type="string">
+      <column length="50" name="urlPage" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="nextToVisits" table="next_to_visit">
+      <key>
+        <column name="foodPlace" not-null="true"/>
+      </key>
+      <one-to-many class="com.tasteFlavor.persistence.mapping.NextToVisit"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="resources" table="resource">
+      <key>
+        <column name="foodPlace" not-null="true"/>
+      </key>
+      <one-to-many class="com.tasteFlavor.persistence.mapping.Resource"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="calificationPerUsers" table="calification_per_user">
+      <key>
+        <column name="foodPlace" not-null="true"/>
+      </key>
+      <one-to-many class="com.tasteFlavor.persistence.mapping.CalificationPerUser"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="specialityPerFoodPlaces" table="speciality_per_food_place">
+      <key>
+        <column name="foodPlace" not-null="true"/>
+      </key>
+      <one-to-many class="com.tasteFlavor.persistence.mapping.SpecialityPerFoodPlace"/>
+    </set>
+  </class>
+</hibernate-mapping>
