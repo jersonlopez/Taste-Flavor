@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "979396017146",
+    "firebase_url": "https://taste-flavor.firebaseio.com",
+    "project_id": "taste-flavor",
+    "storage_bucket": "taste-flavor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979396017146:android:6699b76f5b22e733",
+        "android_client_info": {
+          "package_name": "co.edu.udea.compumovil.gr04_20172.proyecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979396017146-4nr2th0m1pi57e8bblet41mf5q46v741.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.udea.compumovil.gr04_20172.proyecto",
+            "certificate_hash": "8888c2334cc0acd6758da5dfabcab5b268254f46"
+          }
+        },
+        {
+          "client_id": "979396017146-mdt49tdsjkmmvoj1i52tq53u0so221so.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUR2wuM4-VWQfX0xv1lLIIbiEWSqD2TWY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979396017146-mdt49tdsjkmmvoj1i52tq53u0so221so.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

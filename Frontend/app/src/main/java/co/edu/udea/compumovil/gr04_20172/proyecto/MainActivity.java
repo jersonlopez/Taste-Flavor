@@ -17,6 +17,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.AboutFragment;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.Favorite_Fragment;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.Login;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.ProfileFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,AboutFragment.OnFragmentInteractionListener, SettingFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener {
 

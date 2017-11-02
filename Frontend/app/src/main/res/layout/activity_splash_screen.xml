@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/splashscreen"
     android:layout_height="match_parent"
-    tools:context="co.edu.udea.compumovil.gr04_20172.proyecto.SplashScreen">
+    tools:context="co.edu.udea.compumovil.gr04_20172.proyecto.views.SplashScreen">
 
     <ProgressBar
         android:id="@+id/progressBar2"

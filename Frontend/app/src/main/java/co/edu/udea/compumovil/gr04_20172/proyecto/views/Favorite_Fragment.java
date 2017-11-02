@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.gr04_20172.proyecto;
+package co.edu.udea.compumovil.gr04_20172.proyecto.views;
 
 
 import android.graphics.Bitmap;
@@ -13,6 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+
+import co.edu.udea.compumovil.gr04_20172.proyecto.Local;
+import co.edu.udea.compumovil.gr04_20172.proyecto.R;
+import co.edu.udea.compumovil.gr04_20172.proyecto.RVAdapter;
 
 /**
  * A simple {@link Fragment} subclass.

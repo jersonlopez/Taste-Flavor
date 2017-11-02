@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.gr04_20172.proyecto;
+package co.edu.udea.compumovil.gr04_20172.proyecto.views;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import co.edu.udea.compumovil.gr04_20172.proyecto.R;
 
 /**
  * A simple {@link Fragment} subclass.

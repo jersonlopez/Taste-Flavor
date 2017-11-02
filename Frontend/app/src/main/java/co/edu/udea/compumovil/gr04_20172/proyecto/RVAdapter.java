@@ -14,7 +14,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.LocalViewHolder>{
 
     List<Local> locals;
 
-    RVAdapter(List<Local> locals){
+    public RVAdapter(List<Local> locals){
         this.locals = locals;
     }
 
