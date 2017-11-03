@@ -78,12 +78,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 } /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-
-        /*btnLogin=(Button) findViewById(R.id
-                .buttonLogin);
-        tRegister=(TextView) findViewById(R.id.logUp);
-        btnLogin.setOnClickListener(this);
-        tRegister.setOnClickListener(this);*/
     }
 
     private void signIn() {
@@ -127,7 +121,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             intentNavigation.putExtra("name", acct.getGivenName());
                             intentNavigation.putExtra("lastname", acct.getFamilyName());
                             intentNavigation.putExtra("photo", acct.getPhotoUrl().toString());
-                            intentNavigation.putExtra("type", 2);
                             //Toast.makeText(getApplicationContext(), acct.getFamilyName(), Toast.LENGTH_SHORT).show();
                             startActivity(intentNavigation);
                             finish();

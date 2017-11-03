@@ -17,15 +17,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.AboutFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.Favorite_Fragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.Login;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.MainFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,AboutFragment.OnFragmentInteractionListener, SettingFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,AboutFragment.OnFragmentInteractionListener, SettingFragment.OnFragmentInteractionListener{
 
     Fragment fragment=null;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +37,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        firebaseAuth = FirebaseAuth.getInstance();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -54,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //For me
-        fragment=new Favorite_Fragment();
+        fragment=new MainFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.contentNavigation, fragment).commit();
 
 
@@ -101,7 +97,11 @@ public class MainActivity extends AppCompatActivity
 
         boolean fragmentSeleccionado=false;
 
-        if (id == R.id.nav_Profile) {
+        if (id == R.id.nav_Main) {
+            // Handle the camera action
+            fragment=new MainFragment();
+            fragmentSeleccionado=true;
+        }if (id == R.id.nav_Profile) {
             // Handle the camera action
             fragment=new ProfileFragment();
             fragmentSeleccionado=true;
@@ -128,9 +128,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void cerrarSesion(){
-        Toast.makeText(MainActivity.this,"Hasta Luego", Toast.LENGTH_SHORT).show();
+        firebaseAuth.signOut();
+        Toast.makeText(MainActivity.this,"Hasta pronto", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
+        finish();
     }
 
 
