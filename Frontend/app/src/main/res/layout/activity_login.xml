@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loginimage"
-    tools:context="co.edu.udea.compumovil.gr04_20172.proyecto.views.Login">
+    tools:context="co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Login">
 
     <TextView
         android:id="@+id/textViewLogin"
