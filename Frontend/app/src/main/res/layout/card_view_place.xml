@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:clickable="true"
+    android:layout_height="wrap_content"
     android:padding="16dp"
     >
 
@@ -29,17 +31,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/local_name"
-                android:text="Jerson"
+                android:text="nombre"
                 android:layout_toRightOf="@+id/local_photo"
                 android:layout_alignParentTop="true"
-                android:textSize="30sp"
+                android:textSize="21dp"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/local_phone"
-                android:text="310 427 13 94"
+                android:text="telefono"
                 android:layout_toRightOf="@+id/local_photo"
                 android:layout_below="@+id/local_name"
                 />
@@ -47,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Barrio Antioquia"
+                android:text="direccion"
                 android:id="@+id/local_direction"
                 android:layout_toRightOf="@+id/local_photo"
                 android:layout_below="@+id/local_phone"

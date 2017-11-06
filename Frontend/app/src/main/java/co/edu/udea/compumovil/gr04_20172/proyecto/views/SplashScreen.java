@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import co.edu.udea.compumovil.gr04_20172.proyecto.R;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Login;
 
 public class SplashScreen extends AppCompatActivity {
 

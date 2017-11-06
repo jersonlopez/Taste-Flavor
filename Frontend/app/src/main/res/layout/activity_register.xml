@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.edu.udea.compumovil.gr04_20172.proyecto.views.Register">
+    tools:context="co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Register">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -86,14 +86,14 @@
             android:layout_marginEnd="8dp">
 
             <EditText
-                android:id="@+id/editTextUbication"
+                android:id="@+id/editTextCity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Ubicación"
+                android:hint="Ciudad"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword" />
+                android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
 

@@ -3,10 +3,8 @@ package co.edu.udea.compumovil.gr04_20172.proyecto;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.view.View;
+import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,13 +18,14 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.AboutFragment;
-import co.edu.udea.compumovil.gr04_20172.proyecto.views.Favorite_Fragment;
-import co.edu.udea.compumovil.gr04_20172.proyecto.views.Login;
-import co.edu.udea.compumovil.gr04_20172.proyecto.views.MainFragment;
-import co.edu.udea.compumovil.gr04_20172.proyecto.views.ProfileFragment;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.Detail_Fragment_Place;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.Favorite_Fragment;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Login;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.MainFragment;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,AboutFragment.OnFragmentInteractionListener, SettingFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener,AboutFragment.OnFragmentInteractionListener, SettingFragment.OnFragmentInteractionListener, MainFragment.OnFragmentButtonListener{
 
     Fragment fragment=null;
     private FirebaseAuth firebaseAuth;
@@ -140,4 +139,20 @@ public class MainActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
+    @Override
+    public void onFragmentClickButton(String id) {
+        //Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+        fragment=new Detail_Fragment_Place();
+        Bundle bundle=new Bundle();
+        bundle.putString("id",id);
+        fragment.setArguments(bundle);
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contentNavigation,fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
 }

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="co.edu.udea.compumovil.gr04_20172.proyecto.views.MainFragment">
+    tools:context="co.edu.udea.compumovil.gr04_20172.proyecto.views.place.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
