@@ -13,7 +13,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.CardView
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:layout_marginBottom="16dp"
             app:cardElevation="5dp"
@@ -21,110 +21,33 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nombre:"
-                    android:gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/name_place_detail_apartment_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="23"
-                    android:gravity="center"
-                    android:textSize="16dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Telefono:"
-                    android:gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/Phone_place_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="23"
-                    android:gravity="center"
-                    android:textSize="16dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tipo:"
-                    android:gravity="center"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/type_place_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="23"
-                    android:gravity="center"
-                    android:textSize="16dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dirección:"
-                    android:gravity="center"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/direction_place_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="23"
-                    android:gravity="center"
-                    android:textSize="16dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Descripción:"
-                    android:gravity="center"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/description_place_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="23"
-                    android:gravity="center"
-                    android:textSize="16dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="10dp"/>
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:id="@+id/rvFood"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp">
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/map_button"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:background="@color/colorPrimary"
                     android:layout_marginTop="7dp"
-                    android:text="Ver en Mapa" />
+                    android:background="@color/colorPrimary"
+                    android:text="Ver en Mapa"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
-                <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:id="@+id/rv"
-                    />
-            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -168,6 +91,5 @@
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
-
 
 </android.support.design.widget.CoordinatorLayout>

@@ -28,7 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/local_name"
+                android:id="@+id/food_name"
                 android:text="Nombre"
                 android:layout_toRightOf="@+id/food_photo"
                 android:layout_alignParentTop="true"
@@ -41,14 +41,14 @@
                 android:id="@+id/food_price"
                 android:text="Precio"
                 android:layout_toRightOf="@+id/food_photo"
-                android:layout_below="@+id/local_name"
+                android:layout_below="@+id/food_name"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Place"
-                android:id="@+id/food_place"
+                android:text="Description"
+                android:id="@+id/food_description"
                 android:layout_toRightOf="@+id/food_photo"
                 android:layout_below="@+id/food_price"
                 />

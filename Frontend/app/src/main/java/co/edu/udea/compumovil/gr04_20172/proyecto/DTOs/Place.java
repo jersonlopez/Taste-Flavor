@@ -18,7 +18,7 @@ public class Place  {
     }
 
     public Place (String name, String photo, String phone, String Description, String type, String direction) {
-        this.photo = name;
+        this.name = name;
         this.photo = photo;
         this.type = type;
         this.Description= Description;

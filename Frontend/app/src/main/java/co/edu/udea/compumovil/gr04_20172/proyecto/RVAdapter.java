@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Food;
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Place;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.MainFragment;
 
@@ -24,6 +25,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.LocalViewHolder> i
     public RVAdapter(ArrayList<Place> locals){
         this.locals = locals;
     }
+
 
     @Override
     public LocalViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {

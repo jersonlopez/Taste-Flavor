@@ -8,18 +8,18 @@ public class Food {
 
     private String name;
     private String photo;
-    private String shortDescription;
+    private String Description;
     private String price;
     private String place;
 
     public Food() {
     }
 
-    public Food (String name, String photo, String shortDescription, String price, String place) {
+    public Food (String name, String photo, String Description, String price, String place) {
         this.photo = name;
         this.photo = photo;
         this.price = price;
-        this.shortDescription = shortDescription;
+        this.Description = Description;
         this.place = place;
 
     }
@@ -40,12 +40,12 @@ public class Food {
         this.photo = photo;
     }
 
-    public String getShortDescription() {
-        return shortDescription;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
     public String getPrice() {

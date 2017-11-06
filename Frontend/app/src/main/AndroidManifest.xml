@@ -32,7 +32,8 @@
         <activity
             android:name=".views.user.Register"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".views.place.Add_Place"></activity>
+        <activity android:name=".views.place.Add_Place"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

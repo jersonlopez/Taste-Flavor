@@ -41,11 +41,11 @@ public class MainFragment extends Fragment implements View.OnClickListener{
 
     private RecyclerView rv;
     private RecyclerView.LayoutManager llm;
+    private RVAdapter adapter;
     private FloatingActionButton fab;
     ArrayList<Place> places;
     private String email, name, lastname, uri;
     private OnFragmentButtonListener mListener;
-    private RVAdapter adapter;
 
 
     public MainFragment() {
