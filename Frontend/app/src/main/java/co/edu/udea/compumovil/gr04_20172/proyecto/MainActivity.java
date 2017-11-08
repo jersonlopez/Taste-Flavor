@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.AboutFragment;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.SettingFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.Detail_Fragment_Place;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.Favorite_Fragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Login;
@@ -70,21 +71,6 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
