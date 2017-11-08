@@ -1,7 +1,6 @@
 package co.edu.udea.compumovil.gr04_20172.proyecto.views.place;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,8 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +29,6 @@ import java.util.ArrayList;
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Food;
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Place;
 import co.edu.udea.compumovil.gr04_20172.proyecto.R;
-import co.edu.udea.compumovil.gr04_20172.proyecto.RVAdapter;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.food.Adapter;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.food.Detail_Fragment_Food;
 

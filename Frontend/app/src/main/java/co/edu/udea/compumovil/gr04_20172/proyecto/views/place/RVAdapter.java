@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.gr04_20172.proyecto;
+package co.edu.udea.compumovil.gr04_20172.proyecto.views.place;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -13,9 +13,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Food;
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Place;
-import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.MainFragment;
+import co.edu.udea.compumovil.gr04_20172.proyecto.R;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.LocalViewHolder> implements  View.OnClickListener{
 
