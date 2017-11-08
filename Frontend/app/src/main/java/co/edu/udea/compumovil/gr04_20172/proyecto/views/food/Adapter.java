@@ -14,9 +14,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Food;
-import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Place;
 import co.edu.udea.compumovil.gr04_20172.proyecto.R;
-import co.edu.udea.compumovil.gr04_20172.proyecto.RVAdapter;
 
 /**
  * Created by jersonlopez on 5/11/17.

@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.AboutFragment;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.SettingFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.Detail_Fragment_Place;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.Favorite_Fragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Login;

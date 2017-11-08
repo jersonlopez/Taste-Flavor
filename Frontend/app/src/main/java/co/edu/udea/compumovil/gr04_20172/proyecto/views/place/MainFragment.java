@@ -10,9 +10,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,19 +29,20 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Food;
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Place;
 import co.edu.udea.compumovil.gr04_20172.proyecto.R;
-import co.edu.udea.compumovil.gr04_20172.proyecto.RVAdapter;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Login;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment implements View.OnClickListener{
+public class MainFragment extends Fragment implements View.OnClickListener, SearchView.OnQueryTextListener{
 
     private FirebaseDatabase database;
-    private DatabaseReference ref;
+    private DatabaseReference refPlace, refFood;
     private Place place;
+    private Food food;
     private FirebaseUser user;
 
     private RecyclerView rv;
@@ -46,6 +52,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     ArrayList<Place> places;
     private String email, name, lastname, uri;
     private OnFragmentButtonListener mListener;
+    SearchView searchView;
 
 
     public MainFragment() {
@@ -56,7 +63,8 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Place");
+        refPlace = database.getReference("Place");
+        refFood = database.getReference("Food");
         user = FirebaseAuth.getInstance().getCurrentUser();
         name = getActivity().getIntent().getStringExtra("name");
         lastname = getActivity().getIntent().getStringExtra("lastname");
@@ -74,8 +82,9 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         }
 
         places = new ArrayList<>();
+        places.clear();
 
-        ref.addChildEventListener(new ChildEventListener() {
+        refPlace.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 place = dataSnapshot.getValue(Place.class);
@@ -114,6 +123,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
+        searchView = (SearchView)v.findViewById(R.id.search_view);
         fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +140,13 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         });
 
         rv = (RecyclerView) v.findViewById(R.id.rv);
+        paint();
+
+        searchView.setOnQueryTextListener(this);
+        return v;
+    }
+
+    private void paint() {
         llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
 
@@ -152,7 +169,6 @@ public class MainFragment extends Fragment implements View.OnClickListener{
 
         rv.setAdapter(adapter);
         setHasOptionsMenu(true);
-        return v;
     }
 
     @Override
@@ -179,7 +195,82 @@ public class MainFragment extends Fragment implements View.OnClickListener{
 
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        query = Character.toUpperCase(query.charAt(0)) + query.substring(1,query.length());
+        Toast.makeText(getActivity(), query, Toast.LENGTH_SHORT).show();
+        refFood.orderByChild("name").equalTo(query).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                food = dataSnapshot.getValue(Food.class);
+                //Toast.makeText(getActivity(), food.getPlace(), Toast.LENGTH_SHORT).show();
+
+                places.clear();
+                refPlace.orderByChild("direction").equalTo(food.getPlace()).addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        place = dataSnapshot.getValue(Place.class);
+                        //Toast.makeText(getActivity(), apartment.getUbication(), Toast.LENGTH_SHORT).show();
+
+                        places.add(place);
+                        adapter.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+                paint();
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
+    }
+
     public interface OnFragmentButtonListener {
         void onFragmentClickButton(String id);
     }
+
 }
