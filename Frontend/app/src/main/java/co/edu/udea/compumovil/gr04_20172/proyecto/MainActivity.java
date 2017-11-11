@@ -3,6 +3,7 @@ package co.edu.udea.compumovil.gr04_20172.proyecto;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity
 
     public void cerrarSesion(){
         firebaseAuth.signOut();
-        Toast.makeText(MainActivity.this,"Hasta pronto", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,"Cerrando sesion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
         finish();

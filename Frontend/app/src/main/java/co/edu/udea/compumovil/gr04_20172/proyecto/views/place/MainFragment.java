@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,7 +53,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
     ArrayList<Place> places;
     private String email, name, lastname, uri;
     private OnFragmentButtonListener mListener;
-    SearchView searchView;
+    private SearchView searchView;
 
 
     public MainFragment() {
@@ -123,13 +124,13 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
+        Snackbar.make(v, "Cargando restaurantes", Snackbar.LENGTH_LONG).show();
         searchView = (SearchView)v.findViewById(R.id.search_view);
         fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Agregar apartamento", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Agregar apartamento", Snackbar.LENGTH_LONG).show();
                 Intent intentToAdd = new Intent(getActivity(), Add_Place.class);
                 intentToAdd.putExtra("email", email);
                 intentToAdd.putExtra("name", name);
@@ -193,12 +194,13 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
     @Override
     public void onClick(View view) {
 
+
     }
 
     @Override
     public boolean onQueryTextSubmit(String query) {
         query = Character.toUpperCase(query.charAt(0)) + query.substring(1,query.length());
-        Toast.makeText(getActivity(), query, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), query, Toast.LENGTH_SHORT).show();
         refFood.orderByChild("name").equalTo(query).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

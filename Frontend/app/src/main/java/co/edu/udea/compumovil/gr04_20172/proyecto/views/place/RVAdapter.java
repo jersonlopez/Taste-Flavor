@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -76,18 +77,27 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.LocalViewHolder> i
         private CardView cv;
         private TextView name;
         private TextView direction;
-        private ImageView photo;
+        private ImageView photo, favorite;
         private TextView phone;
         private Context contexto;
 
-        LocalViewHolder(View itemView, Context context) {
+        LocalViewHolder(View itemView, final Context context) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);
             name = (TextView)itemView.findViewById(R.id.local_name);
             direction = (TextView)itemView.findViewById(R.id.local_direction);
             photo = (ImageView)itemView.findViewById(R.id.local_photo);
+            favorite = (ImageView) itemView.findViewById(R.id.favorite);
             phone = (TextView)itemView.findViewById(R.id.local_phone);
             this.contexto = context;
+            favorite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    favorite.setImageResource(R.mipmap.ic_launcher_2);
+                    Toast.makeText(context, "favorite", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
     }
 

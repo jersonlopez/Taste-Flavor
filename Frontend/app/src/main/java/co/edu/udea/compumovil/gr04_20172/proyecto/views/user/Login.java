@@ -2,6 +2,7 @@ package co.edu.udea.compumovil.gr04_20172.proyecto.views.user;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,10 +49,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    //Intent intentNavigation = new Intent(LoginActivity.this, Navigation_Drawer.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    //intentNavigation.putExtra("email", user.getEmail());
-                    //Toast.makeText(getApplicationContext(), user, Toast.LENGTH_SHORT).show();
-                    //startActivity(intentNavigation);
+                    Intent intentNavigation = new Intent(Login.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intentNavigation.putExtra("email", user.getEmail());
+                    //Toast.makeText(getApplicationContext(), user.getDisplayName(), Toast.LENGTH_SHORT).show();
+                    startActivity(intentNavigation);
+                    finish();
                     Log.d("TAG", "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
