@@ -108,7 +108,7 @@ public class Add_Place extends AppCompatActivity implements View.OnClickListener
                             Uri downloadUrl = taskSnapshot.getDownloadUrl();
                             routeDowload = downloadUrl.toString();
 
-                            Place place = new Place(textName, routeDowload, textPhone, textDescription, textType, textDirection );
+                            Place place = new Place(textName, routeDowload, textPhone, textDescription, textType, textDirection, "nofavorite");
 
                             mFireBase.child("Place").child(nombre).setValue(place);
 

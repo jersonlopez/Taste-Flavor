@@ -13,17 +13,19 @@ public class Place  {
     private String Description;
     private String type;
     private String direction;
+    private String state;
 
     public Place() {
     }
 
-    public Place (String name, String photo, String phone, String Description, String type, String direction) {
+    public Place (String name, String photo, String phone, String Description, String type, String direction, String state) {
         this.name = name;
         this.photo = photo;
         this.type = type;
         this.Description= Description;
         this.direction = direction;
         this.phone = phone;
+        this.state = state;
 
     }
 
@@ -73,5 +75,13 @@ public class Place  {
 
     public void setDirection(String direction) {
         this.direction = direction;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }

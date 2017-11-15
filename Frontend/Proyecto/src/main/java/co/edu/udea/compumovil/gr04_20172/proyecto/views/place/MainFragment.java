@@ -38,7 +38,7 @@ import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Login;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment implements View.OnClickListener, SearchView.OnQueryTextListener{
+public class MainFragment extends Fragment implements View.OnClickListener, SearchView.OnQueryTextListener {
 
     private FirebaseDatabase database;
     private DatabaseReference refPlace, refFood;
@@ -60,6 +60,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
         // Required empty public constructor
     }
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,14 +72,11 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
         lastname = getActivity().getIntent().getStringExtra("lastname");
         uri = getActivity().getIntent().getStringExtra("photo");
 
-        if(user != null)
-        {
+        if (user != null) {
             email = user.getEmail();
-        }
-        else
-        {
+        } else {
             getActivity().finish();
-            Intent toLogin= new Intent(getContext(), Login.class);
+            Intent toLogin = new Intent(getContext(), Login.class);
             startActivity(toLogin);
         }
 
@@ -125,7 +123,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
         Snackbar.make(v, "Cargando restaurantes", Snackbar.LENGTH_LONG).show();
-        searchView = (SearchView)v.findViewById(R.id.search_view);
+        searchView = (SearchView) v.findViewById(R.id.search_view);
         fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,18 +149,13 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
         llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
 
-        /*places.add(new Place("Burger King", "photo", "3104271394", "comidas rapidas", "las mejores hamburguesas", "barrio antioquia" ));
-        places.add(new Place("Mc Donals", "photo", "320 633 97 38", "postres", "los mas ricos postres", "manrique"));
-        places.add(new Place("Subway", "photo", "321 857 35 24", "sanduches", "los mejores sanduches", "san javier"));*/
-
-        adapter = new RVAdapter(places);
+        adapter = new RVAdapter(places, email);
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String id = adapter.getItem(rv.getChildAdapterPosition(view)).getDirection();
                 //Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
-                if(mListener!=null)
-                {
+                if (mListener != null) {
                     mListener.onFragmentClickButton(id);
                 }
             }
@@ -175,11 +168,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof OnFragmentButtonListener)
-        {
+        if (context instanceof OnFragmentButtonListener) {
             mListener = (OnFragmentButtonListener) context;
-        }
-        else{
+        } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentButtonListener");
         }
@@ -193,13 +184,11 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
 
     @Override
     public void onClick(View view) {
-
-
     }
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        query = Character.toUpperCase(query.charAt(0)) + query.substring(1,query.length());
+        query = Character.toUpperCase(query.charAt(0)) + query.substring(1, query.length());
         //Toast.makeText(getActivity(), query, Toast.LENGTH_SHORT).show();
         refFood.orderByChild("name").equalTo(query).addChildEventListener(new ChildEventListener() {
             @Override

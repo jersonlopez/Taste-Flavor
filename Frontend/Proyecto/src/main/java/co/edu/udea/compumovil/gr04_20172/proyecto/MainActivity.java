@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         if (fragmentSeleccionado){
-            getSupportFragmentManager().beginTransaction().replace(R.id.contentNavigation, fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.contentNavigation, fragment).addToBackStack(null).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
