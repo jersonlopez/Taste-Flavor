@@ -28,6 +28,7 @@ import java.util.ArrayList;
 
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Food;
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Place;
+import co.edu.udea.compumovil.gr04_20172.proyecto.MapsActivity;
 import co.edu.udea.compumovil.gr04_20172.proyecto.R;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.food.Adapter;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.food.Detail_Fragment_Food;
@@ -171,11 +172,13 @@ public class Detail_Fragment_Place extends Fragment implements  View.OnClickList
         switch (view.getId())
         {
             case R.id.map_button:
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:6.266953,-75.569111?z=30"));
+                /*Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:6.266953,-75.569111?z=30"));
                 if (intent!=null)
                 {
                     startActivity(intent);
-                }
+                }*/
+                Intent maps = new Intent(getActivity(), MapsActivity.class);
+                startActivity(maps);
                 break;
         }
     }

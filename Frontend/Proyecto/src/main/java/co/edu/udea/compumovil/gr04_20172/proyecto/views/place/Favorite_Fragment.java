@@ -28,12 +28,18 @@ import java.util.ArrayList;
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Food;
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Place;
 import co.edu.udea.compumovil.gr04_20172.proyecto.R;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.AboutFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Login;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Favorite_Fragment extends Fragment implements View.OnClickListener {
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    private String mParam1;
+    private String mParam2;
+
     private FirebaseDatabase database;
     private DatabaseReference refPlace;
     private Place place;
@@ -52,9 +58,23 @@ public class Favorite_Fragment extends Fragment implements View.OnClickListener 
         // Required empty public constructor
     }
 
+    // TODO: Rename and change types and number of parameters
+    public static AboutFragment newInstance(String param1, String param2) {
+        AboutFragment fragment = new AboutFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
         database = FirebaseDatabase.getInstance();
         refPlace = database.getReference("Favorite");
         user = FirebaseAuth.getInstance().getCurrentUser();

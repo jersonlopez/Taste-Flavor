@@ -27,9 +27,10 @@ import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.MainFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,AboutFragment.OnFragmentInteractionListener, SettingFragment.OnFragmentInteractionListener, MainFragment.OnFragmentButtonListener{
+        implements NavigationView.OnNavigationItemSelectedListener, AboutFragment.OnFragmentInteractionListener,
+        SettingFragment.OnFragmentInteractionListener, MainFragment.OnFragmentButtonListener {
 
-    Fragment fragment=null;
+    Fragment fragment = null;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -51,8 +52,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //For me
-        fragment=new MainFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.contentNavigation, fragment).commit();
+        fragment = new MainFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.contentNavigation, fragment).commit();
 
 
     }
@@ -63,7 +64,13 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+                getSupportFragmentManager().popBackStack();
+            } else {
+                super.onBackPressed();
+            }
+
         }
     }
 
@@ -96,31 +103,34 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
 
-        boolean fragmentSeleccionado=false;
+        boolean fragmentSeleccionado = false;
 
         if (id == R.id.nav_Main) {
             // Handle the camera action
-            fragment=new MainFragment();
-            fragmentSeleccionado=true;
-        }if (id == R.id.nav_Profile) {
+            fragment = new MainFragment();
+            fragmentSeleccionado = true;
+        }
+        if (id == R.id.nav_Profile) {
             // Handle the camera action
-            fragment=new ProfileFragment();
-            fragmentSeleccionado=true;
+            fragment = new ProfileFragment();
+            fragmentSeleccionado = true;
         } else if (id == R.id.nav_Favorite) {
-            fragment=new Favorite_Fragment();
-            fragmentSeleccionado=true;
+            fragment = new Favorite_Fragment();
+            fragmentSeleccionado = true;
         } else if (id == R.id.nav_Setting) {
-            fragment=new SettingFragment();
-            fragmentSeleccionado=true;
+            fragment = new SettingFragment();
+            fragmentSeleccionado = true;
         } else if (id == R.id.nav_Logout) {
             this.cerrarSesion();
         } else if (id == R.id.nav_About) {
-            fragment=new AboutFragment();
-            fragmentSeleccionado=true;
+            fragment = new AboutFragment();
+            fragmentSeleccionado = true;
         }
 
-        if (fragmentSeleccionado){
-            getSupportFragmentManager().beginTransaction().replace(R.id.contentNavigation, fragment).addToBackStack(null).commit();
+        if (fragmentSeleccionado) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.contentNavigation, fragment)
+                    .addToBackStack(null)
+                    .commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -128,9 +138,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void cerrarSesion(){
+
+    public void cerrarSesion() {
         firebaseAuth.signOut();
-        Toast.makeText(MainActivity.this,"Cerrando sesion", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "Cerrando sesion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
         finish();
@@ -146,13 +157,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onFragmentClickButton(String id) {
         //Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
-        fragment=new Detail_Fragment_Place();
-        Bundle bundle=new Bundle();
-        bundle.putString("id",id);
+        fragment = new Detail_Fragment_Place();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
         fragment.setArguments(bundle);
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.contentNavigation,fragment);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contentNavigation, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
