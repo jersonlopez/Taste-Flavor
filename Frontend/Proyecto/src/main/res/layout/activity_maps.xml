@@ -5,4 +5,4 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.edu.udea.compumovil.gr04_20172.proyecto.MapsActivity" />
+    tools:context="co.edu.udea.compumovil.gr04_20172.proyecto.map.MapsActivity" />

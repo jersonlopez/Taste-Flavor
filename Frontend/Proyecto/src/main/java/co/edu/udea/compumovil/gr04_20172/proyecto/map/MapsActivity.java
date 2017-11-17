@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.gr04_20172.proyecto;
+package co.edu.udea.compumovil.gr04_20172.proyecto.map;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -25,6 +25,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import co.edu.udea.compumovil.gr04_20172.proyecto.R;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -49,16 +51,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -73,7 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void addMarker(double lat, double lng) {
         LatLng coordinates = new LatLng(lat, lng);
-        float zoom = 18;
+        float zoom = 20;
         CameraUpdate myUbication = CameraUpdateFactory.newLatLngZoom(coordinates, zoom);
         if (marker != null) marker.remove();
         marker = mMap.addMarker(new MarkerOptions().position(coordinates).title("Mi Ubicación")
