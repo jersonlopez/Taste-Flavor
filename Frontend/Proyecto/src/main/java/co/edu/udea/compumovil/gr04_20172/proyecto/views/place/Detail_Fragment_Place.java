@@ -190,8 +190,6 @@ public class Detail_Fragment_Place extends Fragment implements  View.OnClickList
                 address = direction.replace(" ","+");
                 address = address.replace("-","");
                 new getCoordinates().execute(address);
-                Intent maps = new Intent(getActivity(), MapsActivity.class);
-                startActivity(maps);
                 break;
         }
     }
@@ -234,7 +232,10 @@ public class Detail_Fragment_Place extends Fragment implements  View.OnClickList
                 String lng = ((JSONArray)jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry")
                         .getJSONObject("location").get("lng").toString();
 
-                Toast.makeText(getActivity(), lat+" "+lng, Toast.LENGTH_SHORT).show();
+                Intent maps = new Intent(getActivity(), MapsActivity.class);
+                maps.putExtra("latitude", lat);
+                maps.putExtra("longitude", lng);
+                startActivity(maps);
 
             } catch (JSONException e) {
                 e.printStackTrace();

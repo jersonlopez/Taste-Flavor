@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -33,10 +34,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker marker;
     private double lat = 6.266953;
     private double lng = -75.569111;
+    private double latIn, lngIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        latIn = Double.parseDouble(getIntent().getStringExtra("latitude"));
+        lngIn = Double.parseDouble(getIntent().getStringExtra("longitude"));
+
+        //Toast.makeText(getApplication(), latIn+" "+lngIn, Toast.LENGTH_SHORT).show();
 
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if (status == ConnectionResult.SUCCESS) {
@@ -65,10 +72,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void addMarker(double lat, double lng) {
         LatLng coordinates = new LatLng(lat, lng);
-        float zoom = 20;
+        LatLng coordinatesIn = new LatLng(latIn,lngIn);
+        float zoom = 15;
         CameraUpdate myUbication = CameraUpdateFactory.newLatLngZoom(coordinates, zoom);
         if (marker != null) marker.remove();
         marker = mMap.addMarker(new MarkerOptions().position(coordinates).title("Mi Ubicación")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        marker = mMap.addMarker(new MarkerOptions().position(coordinatesIn).title("Mi Ubicación")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         mMap.animateCamera(myUbication);
     }
@@ -110,6 +120,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         updateUbication(location);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 0, locationListener);
+        //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 0, locationListener);
     }
 }
