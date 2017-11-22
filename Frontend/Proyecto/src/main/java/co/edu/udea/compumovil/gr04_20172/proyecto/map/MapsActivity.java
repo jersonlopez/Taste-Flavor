@@ -43,8 +43,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latIn = Double.parseDouble(getIntent().getStringExtra("latitude"));
         lngIn = Double.parseDouble(getIntent().getStringExtra("longitude"));
 
-        //Toast.makeText(getApplication(), latIn+" "+lngIn, Toast.LENGTH_SHORT).show();
-
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if (status == ConnectionResult.SUCCESS) {
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -71,6 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void addMarker(double lat, double lng) {
+        Toast.makeText(getApplication(), lat+" "+lng, Toast.LENGTH_SHORT).show();
         LatLng coordinates = new LatLng(lat, lng);
         LatLng coordinatesIn = new LatLng(latIn,lngIn);
         float zoom = 15;
@@ -87,6 +86,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (location != null) {
             lat = location.getLatitude();
             lng = location.getLongitude();
+            addMarker(lat, lng);
+        }else{
+            Toast.makeText(this, "por favor encienda el GPS", Toast.LENGTH_SHORT).show();
             addMarker(lat, lng);
         }
     }
@@ -120,6 +122,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         updateUbication(location);
-        //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 0, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 0, locationListener);
     }
 }

@@ -12,12 +12,23 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
+import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Customer;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.AboutFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.SettingFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.Detail_Fragment_Place;
@@ -32,6 +43,9 @@ public class MainActivity extends AppCompatActivity
 
     Fragment fragment = null;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference mFireBase = FirebaseDatabase.getInstance().getReference("Customer");
+    private String email;
+    private Customer user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +54,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
+        email = getIntent().getStringExtra("email");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -50,6 +65,42 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerLayout = navigationView.getHeaderView(0);
+        final CircularImageView photoND = (CircularImageView)headerLayout.findViewById(R.id.imageViewND);
+        final TextView emailND = (TextView) headerLayout.findViewById(R.id.emailND);
+        final TextView nameND = (TextView) headerLayout.findViewById(R.id.nameND);
+
+        mFireBase.orderByChild("id").equalTo(email).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.d("Aviso","¿Entró?");
+                user = dataSnapshot.getValue(Customer.class);
+                nameND.setText(user.getUsername()+" "+user.getUserlastname());
+                emailND.setText(user.getId());
+                Picasso.with(getApplicationContext()).load(user.getPhoto()).into(photoND);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         //For me
         fragment = new MainFragment();

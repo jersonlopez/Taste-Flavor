@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Customer;
@@ -33,7 +34,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference ref;
     private TextView nameProfile=null, lastnameProfile=null, emailProfile=null, cityProfile=null;
-    private ImageView photo;
+    private CircularImageView photo;
     Customer user;
 
     public ProfileFragment() {
