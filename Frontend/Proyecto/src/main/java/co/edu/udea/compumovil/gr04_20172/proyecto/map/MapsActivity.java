@@ -46,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latIn = Double.parseDouble(getIntent().getStringExtra("latitude"));
         lngIn = Double.parseDouble(getIntent().getStringExtra("longitude"));
 
-        //Toast.makeText(getApplication(), latIn+" "+lngIn, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplication(), lat+" "+lng, Toast.LENGTH_SHORT).show();
 
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if (status == ConnectionResult.SUCCESS) {
@@ -91,10 +91,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (location != null) {
             lat = location.getLatitude();
             lng = location.getLongitude();
-            Toast.makeText(getApplication(), lat+" "+lng, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplication(), lat+" "+lng, Toast.LENGTH_SHORT).show();
             addMarker(lat, lng);
         }else{
-            Toast.makeText(this, "Encienda el GPS", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Por favor encienda el GPS", Toast.LENGTH_SHORT).show();
             return;
         }
     }
@@ -132,6 +132,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         updateUbication(location);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000/*BIND_ABOVE_CLIENT*/, 0, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0/*BIND_ABOVE_CLIENT*/, 0, locationListener);
+
     }
 }

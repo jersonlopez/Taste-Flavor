@@ -212,7 +212,7 @@ public class Detail_Fragment_Place extends Fragment implements  View.OnClickList
             try {
                 String address = strings[0];
                 HttpDataHandler http = new HttpDataHandler();
-                String url = String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s", address);
+                String url = String.format("https://maps.googleapis.com/maps/api/geocode/json?address=Medellin+%s", address);
                 response = http.getHTTPData(url);
                 return response;
             }catch (Exception ex){
