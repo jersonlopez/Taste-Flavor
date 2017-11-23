@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
+        "source": "/home/estudiantes/jerson.lopez/.android/build-cache/014decd57b97c2f2e6089e545aaad4f7c97df6cb/output/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/home/estudiantes/jerson.lopez/.android/build-cache/014decd57b97c2f2e6089e545aaad4f7c97df6cb/output/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/avd_show_password.xml",
+        "source": "/home/estudiantes/jerson.lopez/.android/build-cache/aac5f42da02db484de02f060104cb5e8855df5a6/output/res/drawable-v21/avd_show_password.xml"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/backgroundsetting.png",
+        "source": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/src/main/res/drawable-v21/backgroundsetting.png"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/home/estudiantes/jerson.lopez/.android/build-cache/014decd57b97c2f2e6089e545aaad4f7c97df6cb/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/backgroundfavorite.png",
+        "source": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/src/main/res/drawable-v21/backgroundfavorite.png"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/design_password_eye.xml",
+        "source": "/home/estudiantes/jerson.lopez/.android/build-cache/aac5f42da02db484de02f060104cb5e8855df5a6/output/res/drawable-v21/design_password_eye.xml"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/home/estudiantes/jerson.lopez/.android/build-cache/014decd57b97c2f2e6089e545aaad4f7c97df6cb/output/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/backgroundabout.png",
+        "source": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/src/main/res/drawable-v21/backgroundabout.png"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/backgorundprofile.jpg",
+        "source": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/src/main/res/drawable-v21/backgorundprofile.jpg"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/design_bottom_navigation_item_background.xml",
+        "source": "/home/estudiantes/jerson.lopez/.android/build-cache/aac5f42da02db484de02f060104cb5e8855df5a6/output/res/drawable-v21/design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "/home/estudiantes/jerson.lopez/Documents/Taste-Flavor/Frontend/app/build/intermediates/res/merged/debug/drawable-v21/avd_hide_password.xml",
+        "source": "/home/estudiantes/jerson.lopez/.android/build-cache/aac5f42da02db484de02f060104cb5e8855df5a6/output/res/drawable-v21/avd_hide_password.xml"
+    }
+]

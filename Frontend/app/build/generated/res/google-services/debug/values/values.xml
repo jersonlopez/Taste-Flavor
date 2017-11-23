@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">979396017146-mdt49tdsjkmmvoj1i52tq53u0so221so.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://taste-flavor.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">979396017146</string>
+    <string name="google_api_key" translatable="false">AIzaSyDUR2wuM4-VWQfX0xv1lLIIbiEWSqD2TWY</string>
+    <string name="google_app_id" translatable="false">1:979396017146:android:6699b76f5b22e733</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDUR2wuM4-VWQfX0xv1lLIIbiEWSqD2TWY</string>
+    <string name="google_storage_bucket" translatable="false">taste-flavor.appspot.com</string>
+</resources>

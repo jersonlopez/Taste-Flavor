@@ -31,16 +31,16 @@ import com.squareup.picasso.Picasso;
 
 import co.edu.udea.compumovil.gr04_20172.proyecto.DTOs.Customer;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.AboutFragment;
-import co.edu.udea.compumovil.gr04_20172.proyecto.views.SettingFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.Detail_Fragment_Place;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.Favorite_Fragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Login;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.MainFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.ProfileFragment;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.SettingsScreen;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, AboutFragment.OnFragmentInteractionListener,
-        SettingFragment.OnFragmentInteractionListener, MainFragment.OnFragmentButtonListener {
+        MainFragment.OnFragmentButtonListener {
 
     Fragment fragment = null;
     private FirebaseAuth firebaseAuth;
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity
             fragment = new Favorite_Fragment();
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_Setting) {
-            fragment = new SettingFragment();
+            fragment = new Fragment();
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_Logout) {
             this.cerrarSesion();
