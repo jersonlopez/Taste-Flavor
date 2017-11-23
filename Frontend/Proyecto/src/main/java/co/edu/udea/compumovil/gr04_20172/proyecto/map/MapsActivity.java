@@ -2,8 +2,10 @@ package co.edu.udea.compumovil.gr04_20172.proyecto.map;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -25,6 +27,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import co.edu.udea.compumovil.gr04_20172.proyecto.R;
 
@@ -78,16 +81,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (marker != null) marker.remove();
         marker = mMap.addMarker(new MarkerOptions().position(coordinates).title("Mi Ubicación")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-        marker = mMap.addMarker(new MarkerOptions().position(coordinatesIn).title("Mi Ubicación")
+        marker = mMap.addMarker(new MarkerOptions().position(coordinatesIn).title("Restaurante")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         mMap.animateCamera(myUbication);
+        mMap.addPolyline(new PolylineOptions().add(coordinates, coordinatesIn).width(5).color(Color.BLUE));
     }
 
     private void updateUbication(Location location) {
         if (location != null) {
             lat = location.getLatitude();
             lng = location.getLongitude();
+            Toast.makeText(getApplication(), lat+" "+lng, Toast.LENGTH_SHORT).show();
             addMarker(lat, lng);
+        }else{
+            Toast.makeText(this, "Encienda el GPS", Toast.LENGTH_SHORT).show();
+            return;
         }
     }
 
@@ -114,12 +122,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     };
 
     private void myUbication() {
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getApplication(), "no hay permisos", Toast.LENGTH_SHORT).show();
             return;
         }
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         updateUbication(location);
-        //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 0, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000/*BIND_ABOVE_CLIENT*/, 0, locationListener);
     }
 }
