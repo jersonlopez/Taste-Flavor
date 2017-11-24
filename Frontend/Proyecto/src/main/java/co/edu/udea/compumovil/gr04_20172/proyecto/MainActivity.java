@@ -3,11 +3,9 @@ package co.edu.udea.compumovil.gr04_20172.proyecto;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
-import android.support.v4.media.MediaBrowserCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -36,7 +34,7 @@ import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.Favorite_Fragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Login;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.place.MainFragment;
 import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.ProfileFragment;
-import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.SettingsScreen;
+import co.edu.udea.compumovil.gr04_20172.proyecto.views.user.Settings;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, AboutFragment.OnFragmentInteractionListener,
@@ -171,7 +169,7 @@ public class MainActivity extends AppCompatActivity
             fragment = new Favorite_Fragment();
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_Setting) {
-            fragment = new Fragment();
+            fragment = new Settings();
             fragmentSeleccionado = true;
         } else if (id == R.id.nav_Logout) {
             this.cerrarSesion();
