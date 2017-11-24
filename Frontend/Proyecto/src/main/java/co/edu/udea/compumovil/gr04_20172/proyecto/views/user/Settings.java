@@ -17,6 +17,7 @@ public class Settings extends PreferenceFragmentCompat {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
         SwitchPreference preference = (SwitchPreference)findPreference("switch");
+        //preference.setEnabled(true);
     }
 
     @Override
