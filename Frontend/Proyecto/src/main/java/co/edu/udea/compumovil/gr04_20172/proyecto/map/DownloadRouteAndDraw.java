@@ -103,7 +103,7 @@ public class DownloadRouteAndDraw extends AsyncTask<String, Integer, List<HashMa
     private void drawPolylineOnMap() {
         PolylineOptions lineOptions = new PolylineOptions();
         lineOptions.addAll(points);
-        lineOptions.width(5);
+        lineOptions.width(7);
         lineOptions.color(Color.BLUE);
         lineOptions.geodesic(true);
 

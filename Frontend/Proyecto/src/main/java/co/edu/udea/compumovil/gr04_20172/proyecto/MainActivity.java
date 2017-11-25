@@ -158,10 +158,10 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_Main) {
             // Handle the camera action
             fragment = new MainFragment();
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             getSupportFragmentManager().beginTransaction().replace(R.id.contentNavigation, fragment)
                     .addToBackStack(null)
                     .commit();
-            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
         if (id == R.id.nav_Profile) {
             // Handle the camera action

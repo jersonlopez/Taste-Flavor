@@ -27,7 +27,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.LocalViewHolder> i
     private View.OnClickListener listener;
     private DatabaseReference mFireBase = FirebaseDatabase.getInstance().getReference();
     private String email;
-    private RVAdapter adapter;
 
     public RVAdapter(ArrayList<Place> locals, String email) {
         this.locals = locals;
@@ -90,7 +89,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.LocalViewHolder> i
                     Toast.makeText(holder.contexto, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
                 }
                 //holder.itemView.getDisplay();
-                holder.favorite.clearFocus();
+                //holder.favorite.clearFocus();
             }
         });
     }

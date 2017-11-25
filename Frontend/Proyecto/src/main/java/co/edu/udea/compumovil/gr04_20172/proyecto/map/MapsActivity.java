@@ -38,6 +38,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double lat = 6.266953;
     private double lng = -75.569111;
     private double latIn, lngIn;
+    private String name, description;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +47,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         latIn = Double.parseDouble(getIntent().getStringExtra("latitude"));
         lngIn = Double.parseDouble(getIntent().getStringExtra("longitude"));
+        name = getIntent().getStringExtra("name");
+        description = getIntent().getStringExtra("description");
 
-        //Toast.makeText(getApplication(), lat+" "+lng, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplication(), description, Toast.LENGTH_SHORT).show();
 
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if (status == ConnectionResult.SUCCESS) {
@@ -81,7 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (marker != null) marker.remove();
         marker = mMap.addMarker(new MarkerOptions().position(coordinates).title("Mi Ubicación")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-        marker = mMap.addMarker(new MarkerOptions().position(coordinatesIn).title("Restaurante")
+        marker = mMap.addMarker(new MarkerOptions().position(coordinatesIn).title(name).snippet(description)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         mMap.animateCamera(myUbication);
         //mMap.addPolyline(new PolylineOptions().add(coordinates, coordinatesIn).width(5).color(Color.BLUE));

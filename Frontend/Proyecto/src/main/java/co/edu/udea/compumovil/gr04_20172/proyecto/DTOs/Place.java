@@ -10,7 +10,7 @@ public class Place  {
     private String name;
     private String photo;
     private String phone;
-    private String Description;
+    private String description;
     private String type;
     private String direction;
     private String state;
@@ -18,11 +18,11 @@ public class Place  {
     public Place() {
     }
 
-    public Place (String name, String photo, String phone, String Description, String type, String direction, String state) {
+    public Place (String name, String photo, String phone, String description, String type, String direction, String state) {
         this.name = name;
         this.photo = photo;
         this.type = type;
-        this.Description= Description;
+        this.description= description;
         this.direction = direction;
         this.phone = phone;
         this.state = state;
@@ -54,11 +54,11 @@ public class Place  {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
-    public void setShortDescription(String Description) {
-        this.Description = Description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getType() {

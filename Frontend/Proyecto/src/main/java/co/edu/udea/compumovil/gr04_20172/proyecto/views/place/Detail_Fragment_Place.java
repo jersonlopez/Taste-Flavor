@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
@@ -59,7 +60,8 @@ public class Detail_Fragment_Place extends Fragment implements  View.OnClickList
     private String id;
     private ImageView image;
     private Button map;
-    private  String direction;
+    private String direction, name, description;
+    private TextView tDescription;
 
 
     public Detail_Fragment_Place() {
@@ -115,6 +117,7 @@ public class Detail_Fragment_Place extends Fragment implements  View.OnClickList
         View v= inflater.inflate(R.layout.fragment_detail__place, container, false);
         toolbar = (CollapsingToolbarLayout)v.findViewById(R.id.collapsing_toolbar);
         image=v.findViewById(R.id.placeImage);
+        tDescription = v.findViewById(R.id.description_place_detail);
         map = v.findViewById(R.id.map_button);
         map.setOnClickListener(this);
 
@@ -125,7 +128,10 @@ public class Detail_Fragment_Place extends Fragment implements  View.OnClickList
                 value = dataSnapshot.getValue(Place.class);
                 toolbar.setTitle(value.getName());
                 Picasso.with(getContext()).load(value.getPhoto()).into(image);
+                tDescription.setText(value.getDescription());
                 direction = value.getDirection();
+                name = value.getName();
+                description = value.getDescription();
             }
 
             @Override
@@ -235,6 +241,8 @@ public class Detail_Fragment_Place extends Fragment implements  View.OnClickList
                 Intent maps = new Intent(getActivity(), MapsActivity.class);
                 maps.putExtra("latitude", lat);
                 maps.putExtra("longitude", lng);
+                maps.putExtra("name", name);
+                maps.putExtra("description", description);
                 startActivity(maps);
 
             } catch (JSONException e) {
