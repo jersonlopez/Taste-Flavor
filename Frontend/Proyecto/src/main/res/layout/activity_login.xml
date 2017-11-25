@@ -37,11 +37,6 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/logoLogin"></com.google.android.gms.common.SignInButton>
 
-
-
-
-
-
     <ImageView
         android:id="@+id/logoLogin"
         android:layout_width="234dp"

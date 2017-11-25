@@ -8,7 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
 
-    <string name="login">Login</string>
+    <string name="login">Welcome</string>
     <string name="emailLogin">Insert your e-mail</string>
     <string name="passwordLogin">Password</string>
     <string name="google">Conect with Goocle</string>

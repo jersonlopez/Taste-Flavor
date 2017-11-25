@@ -84,7 +84,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         marker = mMap.addMarker(new MarkerOptions().position(coordinatesIn).title("Restaurante")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         mMap.animateCamera(myUbication);
-        mMap.addPolyline(new PolylineOptions().add(coordinates, coordinatesIn).width(5).color(Color.BLUE));
+        //mMap.addPolyline(new PolylineOptions().add(coordinates, coordinatesIn).width(5).color(Color.BLUE));
+        DownloadRouteAndDraw downloadRouteAndDraw;
+        downloadRouteAndDraw = new DownloadRouteAndDraw(mMap);
+        downloadRouteAndDraw.execute(getDirectionsUrl(coordinates, coordinatesIn, "driving"));
     }
 
     private void updateUbication(Location location) {
@@ -132,7 +135,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         updateUbication(location);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0/*BIND_ABOVE_CLIENT*/, 0, locationListener);
+        //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0/*BIND_ABOVE_CLIENT*/, 0, locationListener);
 
+    }
+
+    private String getDirectionsUrl(LatLng origin, LatLng dest, String streetMode) {
+
+        // Origin of route
+        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
+
+        // Destination of route
+        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
+
+        // Sensor enabled
+        String sensor = "sensor=false";
+
+        String mode = "mode=" + streetMode;
+
+        // Building the parameters to the web service
+        String parameters = str_origin + "&" + str_dest + "&" + sensor + "&" + mode;
+
+        // Output format
+        String output = "json";
+
+        // Building the url to the web service
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
+
+        return url;
     }
 }

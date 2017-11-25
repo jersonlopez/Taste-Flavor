@@ -124,6 +124,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
 
         Snackbar.make(v, "Cargando restaurantes", Snackbar.LENGTH_LONG).show();
         searchView = (SearchView) v.findViewById(R.id.search_view);
+        searchView.setQueryHint("Buscar por comida...");
         fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,9 +189,76 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        query = Character.toUpperCase(query.charAt(0)) + query.substring(1, query.length());
         //Toast.makeText(getActivity(), query, Toast.LENGTH_SHORT).show();
         refFood.orderByChild("name").equalTo(query).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                food = dataSnapshot.getValue(Food.class);
+                //Toast.makeText(getActivity(), food.getPlace(), Toast.LENGTH_SHORT).show();
+
+                places.clear();
+                refPlace.orderByChild("direction").equalTo(food.getPlace()).addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        place = dataSnapshot.getValue(Place.class);
+                        //Toast.makeText(getActivity(), apartment.getUbication(), Toast.LENGTH_SHORT).show();
+
+                        places.add(place);
+                        adapter.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+                paint();
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        //Toast.makeText(getActivity(), query, Toast.LENGTH_SHORT).show();
+        refFood.orderByChild("name").equalTo(s).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 food = dataSnapshot.getValue(Food.class);
@@ -253,11 +321,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Sear
             }
         });
         return false;
-    }
 
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        return false;
     }
 
     public interface OnFragmentButtonListener {

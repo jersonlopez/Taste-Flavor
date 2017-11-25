@@ -37,7 +37,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.user.Login" />
+        <activity android:name=".views.user.Login"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".views.user.Register"
             android:windowSoftInputMode="adjustResize" />
