@@ -57,7 +57,8 @@ public class FoodPlaceDAOImpl implements FoodPlaceDAO {
 		return (ArrayList<FoodPlace>) foodPlaces;
         
     }
-    
+
+    @Override
     public FoodPlace getById(int idPlace) throws DAOException {
         FoodPlace place = null;
         Session session = null;
@@ -78,6 +79,7 @@ public class FoodPlaceDAOImpl implements FoodPlaceDAO {
         return place;
     }
     
+    @Override
     public ArrayList<FoodPlace> getByCategory(String category ) throws DAOException {
         List<FoodPlace> foodPlaces=new ArrayList<>();
         FoodPlace place = null;
@@ -103,6 +105,4 @@ public class FoodPlaceDAOImpl implements FoodPlaceDAO {
         }
         return (ArrayList<FoodPlace>) foodPlaces;
     }
-    
-    
 }

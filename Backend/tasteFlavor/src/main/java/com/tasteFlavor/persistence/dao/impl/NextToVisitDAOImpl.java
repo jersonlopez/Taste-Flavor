@@ -7,6 +7,7 @@ package com.tasteFlavor.persistence.dao.impl;
 
 import com.tasteFlavor.persistence.dao.EntidadDAO;
 import com.tasteFlavor.persistence.dao.NextToVisitDAO;
+import com.tasteFlavor.persistence.dto.FoodPlace;
 import com.tasteFlavor.persistence.dto.Customer;
 import com.tasteFlavor.persistence.dto.FoodPlace;
 import com.tasteFlavor.persistence.dto.NextToVisit;
@@ -21,18 +22,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
+
 /**
  *
  * @author Daniel
  */
 @Transactional
 public class NextToVisitDAOImpl implements NextToVisitDAO {
-
     @Autowired
     private SessionFactory sessionFactory;
     @Autowired
     @Qualifier("entidadDao")
     private EntidadDAO<NextToVisit> entidadDao;
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public ArrayList<FoodPlace> getAllFavorite(int idCustomer) throws DAOException {
+        List<FoodPlace> foodPlacesFavorite=new ArrayList<>();
+        Session session=null;
+        try {
+            session=sessionFactory.openSession();
+            Query query=session.createQuery("select * from next_to_visit where customer = idCustomer");
+
+
+        } catch (Exception e) {
+            throw new DAOException(e);
+        }finally {
+            if(session!=null) {
+                try {
+                    session.close();
+                } catch (HibernateException e) {
+                    throw new DAOException(e);
+                }
+            }
+        }
+        return (ArrayList<FoodPlace>) foodPlacesFavorite;
+        
+    }
 
     @Override
     public NextToVisit save(NextToVisit nextToVisit) throws DAOException {
@@ -70,11 +96,4 @@ public class NextToVisitDAOImpl implements NextToVisitDAO {
 		}
      
     }
-    
-    
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> master
 }
