@@ -17,4 +17,5 @@ import exception.DAOException;
 public interface NextToVisitDAO {
     public NextToVisit save(NextToVisit nextToVisit) throws DAOException;
     public void delete(NextToVisit nextToVisit) throws DAOException;
+    public void markAsVisited(NextToVisit nextToVisit) throws DAOException;
 }
