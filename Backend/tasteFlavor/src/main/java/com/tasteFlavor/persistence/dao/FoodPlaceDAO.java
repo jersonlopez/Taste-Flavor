@@ -18,4 +18,6 @@ import java.util.ArrayList;
 public interface FoodPlaceDAO {
 
     public ArrayList<FoodPlace> getAllFoodPlace() throws DAOException;
+    public FoodPlace getById(int idPlace) throws DAOException;
+    public ArrayList<FoodPlace> getByCategory(String category ) throws DAOException;
 }
