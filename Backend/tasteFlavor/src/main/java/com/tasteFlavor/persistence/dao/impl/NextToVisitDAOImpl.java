@@ -72,5 +72,9 @@ public class NextToVisitDAOImpl implements NextToVisitDAO {
     }
     
     
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> master
 }
