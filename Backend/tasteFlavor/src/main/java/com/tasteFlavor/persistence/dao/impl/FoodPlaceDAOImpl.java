@@ -56,4 +56,30 @@ public class FoodPlaceDAOImpl implements FoodPlaceDAO {
 		return (ArrayList<FoodPlace>) foodPlaces;
         
     }
+    
+    public FoodPlace seeDetail(Integer idPlace) throws DAOException{
+        FoodPlace foodPlace;
+        foodPlace = new FoodPlace();
+        Session session=null;
+            try {
+		session=sessionFactory.openSession();
+		Query query=session.createQuery("select id,name,"
+                        + "address, phone, schedule, description,"
+                        + "urlPage, placeType from food_place where id=idPlace");
+                     
+		} catch (Exception e) {
+                    throw new DAOException(e);
+		}finally {
+                    if(session!=null) {
+			try {
+                            session.close();
+			} catch (HibernateException e) {
+                            throw new DAOException(e);
+			}
+                    }
+		}
+        
+        return foodPlace;
+    }
+    
 }
