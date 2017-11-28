@@ -5,10 +5,16 @@
  */
 package com.tasteFlavor.persistence.dao;
 
+import com.tasteFlavor.persistence.dto.Customer;
+import com.tasteFlavor.persistence.dto.FoodPlace;
+import com.tasteFlavor.persistence.dto.NextToVisit;
+import exception.DAOException;
+
 /**
  *
  * @author Daniel
  */
 public interface NextToVisitDAO {
-    
+    public NextToVisit save(NextToVisit nextToVisit) throws DAOException;
+    public void delete(NextToVisit nextToVisit) throws DAOException;
 }
