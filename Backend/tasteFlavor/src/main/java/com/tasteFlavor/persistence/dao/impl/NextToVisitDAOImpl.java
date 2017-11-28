@@ -13,4 +13,5 @@ import com.tasteFlavor.persistence.dao.NextToVisitDAO;
  */
 public class NextToVisitDAOImpl implements NextToVisitDAO{
     
+    
 }
