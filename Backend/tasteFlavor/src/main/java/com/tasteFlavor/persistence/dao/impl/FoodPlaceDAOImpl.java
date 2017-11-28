@@ -11,6 +11,7 @@ import com.tasteFlavor.persistence.dto.FoodPlace;
 import exception.DAOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.TypedQuery;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
@@ -39,10 +40,10 @@ public class FoodPlaceDAOImpl implements FoodPlaceDAO {
 		Session session=null;
 		try {
 			session=sessionFactory.openSession();
-			Query query=session.createQuery("select * from food_place");
+			TypedQuery<FoodPlace> query=(TypedQuery<FoodPlace>)session.createQuery("from food_place");
+                        foodPlaces= query.getResultList();      
                         
-             
-		} catch (Exception e) {
+             } catch (Exception e) {
 			throw new DAOException(e);
 		}finally {
 			if(session!=null) {
@@ -56,4 +57,52 @@ public class FoodPlaceDAOImpl implements FoodPlaceDAO {
 		return (ArrayList<FoodPlace>) foodPlaces;
         
     }
+    
+    public FoodPlace getById(int idPlace) throws DAOException {
+        FoodPlace place = null;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            place = (FoodPlace) session.get(FoodPlace.class, idPlace);
+        } catch (HibernateException e) {
+            throw new DAOException(e);
+        } finally {
+            if (session != null) {
+                try {
+                    session.close();
+                } catch (HibernateException e) {
+                    throw new DAOException(e);
+                }
+            }
+        }
+        return place;
+    }
+    
+    public ArrayList<FoodPlace> getByCategory(String category ) throws DAOException {
+        List<FoodPlace> foodPlaces=new ArrayList<>();
+        FoodPlace place = null;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            //place = (FoodPlace) session.get(FoodPlace.class, category);
+            String consulta = "select * from food_place where placeType=" + category + " or name=" 
+                    + category + " or address=" + category + " or phone=" + category;
+            TypedQuery<FoodPlace> query=(TypedQuery<FoodPlace>)session.createQuery(consulta);
+            foodPlaces= query.getResultList(); 
+          
+        } catch (HibernateException e) {
+            throw new DAOException(e);
+        } finally {
+            if (session != null) {
+                try {
+                    session.close();
+                } catch (HibernateException e) {
+                    throw new DAOException(e);
+                }
+            }
+        }
+        return (ArrayList<FoodPlace>) foodPlaces;
+    }
+    
+    
 }
